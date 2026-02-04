@@ -1,0 +1,385 @@
+.celestial-overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(15, 23, 42, 0.8));
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    perspective: 1000px;
+}
+
+.celestial-dialog {
+    position: relative;
+    width: 480px;
+    background: linear-gradient(165deg, #ffffff 0%, #f8f9ff 50%, #eef2ff 100%);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+        0 8px 16px rgba(0, 0, 0, 0.06),
+        0 -1px 2px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-style: preserve-3d;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.celestial-dialog::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 2px;
+    background: linear-gradient(45deg, #4f46e5, #2563eb, #059669);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.celestial-close-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 24px;
+    color: #4f46e5;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.celestial-close-btn:hover {
+    background: #4f46e5;
+    color: white;
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.celestial-title {
+    font-size: 28px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 32px;
+    background: linear-gradient(135deg, #4f46e5, #2563eb, #059669);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: -0.02em;
+    position: relative;
+}
+
+.celestial-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #4f46e5, #2563eb);
+    border-radius: 4px;
+}
+
+.celestial-alert {
+    margin-bottom: 28px;
+    padding: 20px;
+    border-radius: 16px;
+    background: linear-gradient(to right, #fff1f2, #ffe4e6);
+    border: 1px solid #fecdd3;
+    display: flex;
+    gap: 16px;
+    animation: shakeAlert 0.5s cubic-bezier(0.36, 0, 0.66, -0.56);
+    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.1);
+}
+
+.alert-icon {
+    font-size: 24px;
+    color: #e11d48;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.alert-title {
+    color: #be123c;
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-size: 16px;
+}
+
+.alert-message {
+    color: #e11d48;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.celestial-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.celestial-btn {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    border-radius: 16px;
+    border: none;
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.celestial-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, 
+        rgba(255,255,255,0.1), 
+        rgba(255,255,255,0.2), 
+        rgba(255,255,255,0.1)
+    );
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.celestial-btn:hover::before {
+    opacity: 1;
+}
+
+.celestial-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.celestial-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.manufacturer-btn {
+    background: linear-gradient(135deg, #4f46e5, #2563eb);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.wholesaler-btn {
+    background: linear-gradient(135deg, #059669, #047857);
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+}
+
+.cancel-btn {
+    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    color: #374151;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cancel-btn:hover {
+    background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+}
+.btn-text{
+    color: white;
+}
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.celestial-btn:hover .btn-shine {
+    left: 100%;
+}
+
+.celestial-loading {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.loading-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid #e5e7eb;
+    border-top-color: #4f46e5;
+    border-radius: 50%;
+    animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.loading-text {
+    color: #4f46e5;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(12px);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) rotateX(-10deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shakeAlert {
+    0%, 100% {
+        transform: translateX(0) scale(1);
+    }
+    25% {
+        transform: translateX(-6px) scale(1.02);
+    }
+    75% {
+        transform: translateX(6px) scale(1.02);
+    }
+}
+
+.celestial-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.celestial-btn:focus,
+.celestial-close-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4), 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 500px) {
+    .celestial-dialog {
+        width: 92%;
+        padding: 28px 20px;
+        margin: 16px;
+    }
+
+    .celestial-title {
+        font-size: 24px;
+    }
+
+    .celestial-btn {
+        padding: 16px;
+        font-size: 16px;
+    }
+
+    .celestial-alert {
+        padding: 16px;
+    }
+}
+
+/* Add glass morphism effect to dialog */
+@supports (backdrop-filter: blur(12px)) {
+    .celestial-dialog {
+        background: linear-gradient(
+            165deg,
+            rgba(255, 255, 255, 0.9),
+            rgba(255, 255, 255, 0.8)
+        );
+        backdrop-filter: blur(12px);
+    }
+}
+
+/* Add subtle hover state animations */
+.celestial-btn {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.celestial-btn:hover {
+    animation: buttonPulse 1.5s infinite;
+}
+
+@keyframes buttonPulse {
+    0% {
+        transform: translateY(-3px) scale(1.02);
+    }
+    50% {
+        transform: translateY(-4px) scale(1.02);
+    }
+    100% {
+        transform: translateY(-3px) scale(1.02);
+    }
+}
+
+/* Add 3D parallax effect to buttons */
+.celestial-buttons {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.celestial-btn {
+    transform: translateZ(20px);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhance loading animation */
+.loading-spinner {
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
+}
+
+/* Add pulsing effect to error alert */
+.celestial-alert {
+    animation: alertPulse 2s infinite;
+}
+
+@keyframes alertPulse {
+    0% {
+        box-shadow: 0 4px 12px rgba(225, 29, 72, 0.1);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(225, 29, 72, 0.2);
+    }
+    100% {
+        box-shadow: 0 4px 12px rgba(225, 29, 72, 0.1);
+    }
+}

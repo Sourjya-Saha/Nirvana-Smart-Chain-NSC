@@ -1,0 +1,364 @@
+/* General container */
+div::-webkit-scrollbar {
+  height: 4px; /* Thin scrollbar */
+}
+
+div::-webkit-scrollbar-track {
+  background: transparent; /* Transparent track */
+}
+
+div::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent thumb */
+  border-radius: 10px; /* Rounded corners */
+}
+
+div::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.7); /* Darker thumb on hover */
+}
+
+.cart-management-container {
+    padding: 20px;
+  
+    margin: 0 auto;
+    font-family: 'Poppins';
+    background-color: #f9f9f9;
+    border-radius: 10px;
+  }
+  
+  /* Titles */
+  .cart-management-title, .cart-list-title, .cart-products-title, .cart-details-title {
+    color: #4F46E5;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  
+  /* Form */
+  .cart-management-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+  
+  .cart-id-label {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .generate_qr {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    font-size: 16px;
+    font-weight: bold;
+    border: none; /* Remove borders */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer/hand icon */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    text-align: center;
+    text-decoration: none; /* Remove underline if it's a link */
+  }
+  
+  .generate_qr:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  .generate_qr:active {
+    background-color: #3e8e41; /* Even darker green when active/clicked */
+    transform: scale(0.98); /* Slightly shrink when clicked */
+  }
+  
+  .generate_qr:disabled {
+    background-color: grey; /* Disabled background color */
+    cursor: not-allowed; /* Not-allowed cursor */
+    opacity: 0.6; /* Make it semi-transparent */
+  }
+  
+  
+  .cart-id-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Product row */
+  .cart-product-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .cart-product-select,
+  .cart-product-quantity,
+  .cart-product-price {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .cart-product-total-price {
+    margin-top: 8px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .cart-product-select {
+    max-width: 200px;
+  }
+  
+  .cart-remove-product-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding:10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Buttons */
+  .cart-add-product-btn,
+  .cart-submit-btn,
+  .cart-view-btn,
+  .cart-shipment-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .cart-add-product-btn:hover,
+  .cart-submit-btn:hover,
+  .cart-view-btn:hover,
+  .cart-shipment-btn:hover {
+    background-color: #218838;
+  }
+  
+  .cart-remove-product-btn:hover {
+    background-color: #c0392b;
+  }
+  
+  /* Cart list table */
+  .cart-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cart-list-table th,
+  .cart-list-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .cart-list-table th {
+    background-color: #205eed;
+    color: white;
+  }
+  
+  /* Cart details section */
+  .cart-details-section {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cart-details-id {
+    font-weight: bold;
+  }
+  
+  .cart-details-products {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .cart-details-product {
+    padding: 10px 0;
+  }
+  /* Modal styling */
+.modal {
+  display: flex; /* Align modal to center */
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  animation: fadeIn 0.3s ease-in-out; /* Smooth fade-in effect */
+}
+
+/* Modal content styling */
+.modal-content {
+  background-color: #fefefe;
+  border-radius: 10px;
+  padding: 20px;
+  width: 600px;
+  max-width: 90%;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.3s ease-in-out; /* Smooth slide-down effect */
+}
+
+/* Close button styling */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color:red;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Modal content header */
+.modal-content h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+  border-bottom: 2px solid #007BFF;
+  padding-bottom: 10px;
+}
+
+/* Product card slider */
+.card-slider {
+  display: flex;
+  overflow-x: scroll;
+  padding: 10px 0;
+}
+
+.card {
+  background-color: #f8f9fa;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  min-width: 200px;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Hover effect for cards */
+}
+
+.card h4 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #007BFF;
+}
+
+.card p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Total quantity and price styling */
+.modal-content h4 {
+  margin-top: 10px;
+  font-size: 20px;
+  
+  text-align: center;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-50px); }
+  to { transform: translateY(0); }
+}
+
+.genqr {
+  /* Modal Styling */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Arrange items in a column */
+  position: fixed; /* Fixed position to stay in view */
+  height: 600px;
+  top: 50%; /* Center vertically */
+  margin-top: 50px;
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for centering */
+  width: 90%; /* Responsive width */
+  max-width: 500px; /* Max width for larger screens */
+  background-color: #fff; /* White background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  padding: 20px; /* Inner padding */
+  z-index: 1000; /* Ensure modal is above other content */
+  overflow-x: clip; /* Prevent overflow */
+  overflow-y: scroll ;
+}
+
+.genqr h2 {
+  margin-bottom: 20px; /* Spacing below the header */
+  font-size: 24px; /* Header size */
+  color: #333; /* Darker color for the header */
+}
+
+.genqr label {
+  display: block; /* Make labels block level */
+  margin-bottom: 5px; /* Spacing between label and input */
+  font-weight: bold; /* Bold for emphasis */
+  color: #555; /* Medium gray for text */
+}
+
+.genqr input[type="text"],
+.genqr input[type="date"] {
+  width: 100%; /* Full width inputs */
+  padding: 10px; /* Inner padding */
+  margin-bottom: 15px; /* Spacing between inputs */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 4px; /* Slightly rounded corners */
+  font-size: 16px; /* Font size for inputs */
+}
+
+.genqr button[type="submit"],
+.genqr button {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px 15px; /* Inner padding */
+  cursor: pointer; /* Pointer on hover */
+  font-size: 16px; /* Font size */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.genqr button[type="submit"]:hover,
+.genqr button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+.genqr button {
+  margin-top: 10px; /* Space above close button */
+}
+
